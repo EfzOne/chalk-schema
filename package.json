@@ -1,0 +1,22 @@
+{
+  "name": "chalk-schema",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EfzOne/chalk-schema.git"
+  },
+  "author": "SkyZH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EfzOne/chalk-schema/issues"
+  },
+  "homepage": "https://github.com/EfzOne/chalk-schema#readme",
+  "dependencies": {
+    "mongoose": "^4.4.20"
+  }
+}
