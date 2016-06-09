@@ -1,32 +1,32 @@
 module.exports = (mongoose) => {
   var Schema = mongoose.Schema;
   var studentSchema = Schema({
-    id: Number,
+    studentId: Number,
     year: Number,
     class: Number,
     number: Number
   });
 
   var typeSchema = Schema({
-    id: Number,
+    studentId: Number,
     types: [Number]
   });
 
-  var lessonSchema = Schema({
-    id: Number,
-    lessonId: Number
+  var courseSchema = Schema({
+    studentId: Number,
+    courseId: Number
   });
 
   var Student = mongoose.model('Student', studentSchema);
   var Type = mongoose.model('Type', typeSchema);
-  var Lesson = mongoose.model('Lesson', lessonSchema);
+  var Course = mongoose.model('Course', courseSchema);
 
   return {
     studentSchema: studentSchema,
     typeSchema: typeSchema,
-    lessonSchema: lessonSchema,
+    courseSchema: courseSchema,
     Student: Student,
     Type: Type,
-    Lesson: Lesson
+    Course: Course
   };
 };
