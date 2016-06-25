@@ -1,52 +1,48 @@
 module.exports = (mongoose) => {
   var Schema = mongoose.Schema;
   var studentSchema = Schema({
-    studentId: Number,
+    _id: Number,
     year: Number,
     class: Number,
-    number: Number
-  });
-
-  var typeSchema = Schema({
-    studentId: Number,
-    types: [Number]
-  });
-
-  var courseSchema = Schema({
-    studentId: Number,
-    courseId: Number
+    number: Number,
+    courses: [{type: Number, ref: 'Course'}]
   });
 
   var teacherSchema = Schema({
-    teacherId: Number,
+    _id: Number,
+    name: String,
+    courses: [{type: Number, ref: 'Course'}]
+  });
+
+  var courseSchema = Schema({
+    _id: Number,
     name: String
   });
 
-  var orgSchema = Schema({
-    orgId: Number,
+  var organizationSchema = Schema({
+    _id: Number,
     name: String,
-    class: [Number],
-    teacherId: Number,
-    courseId: Number,
-    times: Number
+    parent: {type: Number, ref: 'Organization'},
+    teacher: {type: Number, ref: 'Teacher'},
+    course: {type: Number, ref: 'Course'},
+    students: [{type: Number, ref: 'Student'}],
+    count: Number,
+    times: [Number]
   });
 
   var Student = mongoose.model('Student', studentSchema);
-  var Type = mongoose.model('Type', typeSchema);
   var Course = mongoose.model('Course', courseSchema);
   var Teacher = mongoose.model('Teacher', teacherSchema);
-  var Org = mongoose.model('Org', orgSchema);
+  var Organization = mongoose.model('Organization', organizationSchema);
 
   return {
     studentSchema: studentSchema,
-    typeSchema: typeSchema,
     courseSchema: courseSchema,
     teacherSchema: teacherSchema,
-    orgSchema: orgSchema,
+    organizationSchema: organizationSchema,
     Student: Student,
-    Type: Type,
     Course: Course,
     Teacher: Teacher,
-    Org: Org
+    Organization: Organization
   };
 };
