@@ -5,7 +5,8 @@ module.exports = (mongoose) => {
     year: Number,
     class: Number,
     number: Number,
-    courses: [{type: Number, ref: 'Course'}]
+    courses: [{type: Number, ref: 'Course'}],
+    organization: {type: Number, ref: 'Organization'}
   });
 
   var teacherSchema = Schema({
@@ -22,7 +23,6 @@ module.exports = (mongoose) => {
   var organizationSchema = Schema({
     _id: Number,
     name: String,
-    parent: {type: Number, ref: 'Organization'},
     teacher: {type: Number, ref: 'Teacher'},
     course: {type: Number, ref: 'Course'},
     students: [{type: Number, ref: 'Student'}],
